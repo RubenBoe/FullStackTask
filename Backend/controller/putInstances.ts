@@ -23,6 +23,10 @@ export function putInstances(
             }
         }
     )
-    insertInstances(instanceArray);
-    res.send(true);
+    if(insertInstances(instanceArray)) {
+        res.send(true);
+    } else {
+        console.log("Something went wrong");
+        res.send(false);
+    }
 }
