@@ -1,5 +1,8 @@
 import express from 'express';
+import * as dotenv from 'dotenv';
 import { putInstances } from './controller/putInstances';
+dotenv.config({path: "./.env"});
+
 const app = express()
 const port = 3000
 

@@ -1,12 +1,13 @@
 import { NextFunction } from "express";
 import { Request, Response } from "express";
 import { Instance, JSONInstance } from "../models/Instance";
+import { insertInstances } from "../data-access/commands/insertInstance";
 
 export function putInstances(
     req: Request<any, boolean, JSONInstance[], any, any>,
     res: Response<boolean, any>,
 ): void {
-    console.log(req.body[0].timestamp.$date.$numberLong)
+    const instanceArray: Instance[] = [];
     req.body.forEach(
         i => {
             for (const personID in i.instances) {
@@ -18,9 +19,10 @@ export function putInstances(
                     PositionX: individualInstance.pos_x,
                     PositionY: individualInstance.pos_y
                 }
-                console.log(inst)
+                instanceArray.push(inst);
             }
         }
     )
+    insertInstances(instanceArray);
     res.send(true);
 }
