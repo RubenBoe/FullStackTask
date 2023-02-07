@@ -15,7 +15,8 @@ export const selectNumberOfHumans = async () => {
             `SELECT ROUND(instanceTimestamp, -6)    AS bucket,
                     COUNT(distinct(PersonID))       AS COUNT
             FROM   instancetable
-            GROUP  BY bucket;
+            GROUP  BY bucket
+            order by bucket;
         `,
             (err, rows) => {
                 if (err) throw new Error("SQL Exception: " + err);
