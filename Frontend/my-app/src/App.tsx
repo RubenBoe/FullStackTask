@@ -11,6 +11,7 @@ function App() {
             Welcome to my App
         </Typography>
         <UploadComponent />
+        <br/>
         <TimeGraphComponent />
     </div>
   );

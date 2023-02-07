@@ -22,7 +22,7 @@ export const selectNumberOfHumans = async () => {
                 rows.forEach(
                     row => {
                         results.push({
-                            time: new Date(row["bucket"] as number),
+                            time: row["bucket"] as number,
                             count: row["COUNT"] as number
                         })
                     }
