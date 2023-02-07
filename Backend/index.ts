@@ -2,6 +2,7 @@ import express from 'express';
 import cors from "cors";
 import * as dotenv from 'dotenv';
 import { putInstances } from './controller/putInstances';
+import { getNumberOfHumansPerTime } from './controller/getPlotData';
 dotenv.config({path: "./.env"});
 
 const app = express()
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.put("/instances", putInstances);
+app.get("/humansPerTime", getNumberOfHumansPerTime);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
